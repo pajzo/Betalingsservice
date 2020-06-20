@@ -2,6 +2,7 @@
 using Betalingsservice.Parser;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -49,10 +50,10 @@ namespace Betalingsservice.TestConsole
                             Parse621(lines);
                             break;
                         case "602": // Payment info
-                            var paymentInfo = ParserClient.GetPaymentInformation(lines);
+                            var paymentInfo = ParserClient.GetPaymentInformation(lines).ToList();
                             break;
                         case "603": // Mandate info
-                            var mandateInfo = ParserClient.GetMandateInformation(lines);
+                            var mandateInfo = ParserClient.GetMandateInformation(lines).ToList();
                             break;
                         default:
                             Console.WriteLine("> Unsupported file type");

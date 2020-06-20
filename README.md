@@ -2,12 +2,12 @@
 
 ## 602 Payment info
 ```
-IEnumerable<PaymentInformation> GetPaymentInformation(string[] fileLines)
+var paymentInfo = ParserClient.GetPaymentInformation(lines);
 ```
 
 ## 603 Mandate info
 ```
-IEnumerable<MandateInformation> GetMandateInformation(string[] fileLines)
+var mandateInfo = ParserClient.GetMandateInformation(lines);
 ```
 
 ## 621 Information

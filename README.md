@@ -1,6 +1,6 @@
 # Betalingsservice
 
-Methods to parse and write file for Betalingsservice
+Methods to parse and write files for Betalingsservice
 
 ## Parse
 

@@ -48,6 +48,28 @@ namespace Betalingsservice.Parser
             return paymentInfoList;
         }
 
+        public static InformationEvents GetInformationEvents(string[] fileLines)
+        {
+            var informationEvents = new InformationEvents();
+
+            informationEvents.MandateRegistrations = fileLines
+                .Where(x => !string.IsNullOrEmpty(x))
+                .Where(x => x.Substring(2, 3) == "022") // Data record type
+                .Where(x => x.Substring(13, 4) == "0200") // Transaction code = Registration of mandate
+                .Select(line => new InformationMandateRegistration
+                {
+                    PbsCreditorNo = line.Substring(5, 8),
+                    TransactionCode = line.Substring(13, 4),
+                    DebtorGroupNo = line.Substring(20, 5),
+                    DebtorCustomerNo = line.Substring(25, 15),
+                    MandateNo = line.Substring(40, 9),
+                    Date = ParseNullableDate(line.Substring(49, 6)),
+                    TextNumber = line.Substring(114, 6)
+                });
+
+            return informationEvents;
+        }
+
         internal static DateTime? ParseNullableDate(string text)
         {
             if (text == "000000")

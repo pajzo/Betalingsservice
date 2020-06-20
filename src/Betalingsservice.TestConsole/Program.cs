@@ -47,7 +47,7 @@ namespace Betalingsservice.TestConsole
                     switch (fileType)
                     {
                         case "621": // Info file
-                            Parse621(lines);
+                            var informationEvents = ParserClient.GetInformationEvents(lines);
                             break;
                         case "602": // Payment info
                             var paymentInfo = ParserClient.GetPaymentInformation(lines).ToList();
@@ -59,8 +59,6 @@ namespace Betalingsservice.TestConsole
                             Console.WriteLine("> Unsupported file type");
                             break;
                     }
-
-                    // blobClient.SetAccessTier(AccessTier.Cool);
                 }
                 else
                 {
@@ -73,38 +71,6 @@ namespace Betalingsservice.TestConsole
 
             Console.WriteLine("- The end -");
             Console.ReadKey();
-        }
-
-        /// <summary>
-        /// TODO REFACTOR!
-        /// </summary>
-        /// <param name="fileLines"></param>
-        static void Parse621(string[] fileLines)
-        {
-            foreach (var line in fileLines)
-            {
-                if (string.IsNullOrEmpty(line))
-                    continue;
-
-                var dataRecordType = line.Substring(2, 3);
-                Console.WriteLine($"{dataRecordType}");
-
-                if (dataRecordType == "022")
-                {
-                    var pbsCreditorNo = line.Substring(5, 8);
-                    var transactionCode = line.Substring(13, 4);
-
-                    var debtorGroup = line.Substring(20, 5);
-                    var debtorCustomerNo = line.Substring(25, 15);
-                    var debtorMandateNo = line.Substring(40, 9);
-                    var effectiveDate = line.Substring(49, 6);
-                    var textNumber = line.Substring(114, 6); // Note: Maybe only parse error 
-
-                    Console.WriteLine($"{pbsCreditorNo} - {transactionCode} - {debtorGroup} - {debtorCustomerNo} - {debtorMandateNo} - {effectiveDate} - {textNumber}");
-                }
-
-            }
-
         }
     }
 }

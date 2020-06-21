@@ -4,8 +4,6 @@ namespace Betalingsservice.Writer
 {
     public class CancellationOfMandate
     {
-        public string PbsCreditorNo { get; set; }
-
         public string DebtorGroupNo { get; set; }
         public string DebtorCustomerNo { get; set; }
         public string MandateNo { get; set; }

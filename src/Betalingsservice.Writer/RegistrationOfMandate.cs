@@ -2,8 +2,6 @@
 {
     public class RegistrationOfMandate
     {
-        public string PbsCreditorNo { get; set; }
-
         public string DebtorGroupNo { get; set; }
         public string DebtorCustomerNo { get; set; }
 

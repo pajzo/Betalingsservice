@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Betalingsservice.Parser\Betalingsservice.Parser.csproj" />
+    <ProjectReference Include="..\Betalingsservice.Writer\Betalingsservice.Writer.csproj" />
   </ItemGroup>
 
 </Project>

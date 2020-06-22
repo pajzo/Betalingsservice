@@ -27,3 +27,6 @@ jobs:
       
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+
+    - name: Pack
+      run: dotnet pack --no-restore --verbosity normal

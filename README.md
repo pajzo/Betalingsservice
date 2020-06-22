@@ -1,5 +1,7 @@
 # Betalingsservice
 
+![.NET Core](https://github.com/pajzo/Betalingsservice/workflows/.NET%20Core/badge.svg?branch=master)
+
 Methods to parse and write files for Betalingsservice
 
 ## Parse
